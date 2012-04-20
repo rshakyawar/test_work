@@ -1,0 +1,6 @@
+<% @employee.each do |f| %>
+
+<div class="field">
+    <%= f %>
+</div>
+<% end %>

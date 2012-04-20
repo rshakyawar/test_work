@@ -1,0 +1,30 @@
+<%= stylesheet_link_tag :all %>
+<%= javascript_include_tag :all %>
+<h3><p id="notice"><%= notice %></h3>
+<div class="navbar">
+			<ul id="nav">
+<table border="2" bordercolor="black">
+<tr>
+	<td><h3>Date</h3> </td>
+	<td><h3> Employee project Description</h3></td>
+	<td><h3>Delete</h3></td>
+</tr>
+<% @a%>
+<% @employee.each do |f| %>
+<div class="field">
+	<tr>
+		<td><h4>   <%= f.emp_status_date %></h4> </td>
+		<td><h4> <%= f.emp_project_description%></h4></td>
+		<td><h4><%=link_to 'Delete', delete_selected_description_path(f.project_id,f.id) %>
+	</tr>
+<%@a=f.project_id%>
+</div><% end %>
+</table>
+<br/>
+
+<h3>
+<%= link_to 'Add Project description', show_for_add_daily_description_path(@a) %></h3>
+
+<%= link_to 'Back', employee_login_show_path %>
+</ul>
+</div>

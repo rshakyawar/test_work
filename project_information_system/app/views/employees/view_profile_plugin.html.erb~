@@ -1,0 +1,6 @@
+
+		<div class="field">
+				 <%= image_tag photo%> 		
+		</div>
+
+<h3><%= link_to 'Back' ,employee_login_show_path%></h3>

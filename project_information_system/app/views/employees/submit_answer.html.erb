@@ -1,0 +1,8 @@
+<%= form_tag(add_answer_path, :method => "post") do %>
+	<%= hidden_field_tag("id",params[:id])%>
+	<%= label_tag(:answer, "Answer:") %>
+	<%= text_area_tag(:answer) %><br/><br/>
+
+<%= submit_tag("ADD")%>
+
+<%end%>

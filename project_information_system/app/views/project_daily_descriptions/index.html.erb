@@ -1,0 +1,29 @@
+<h1>Listing project_daily_descriptions</h1>
+
+<table>
+  <tr>
+    <th>Employee</th>
+    <th>Project</th>
+    <th>Emp status date</th>
+    <th>Emp project description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @project_daily_descriptions.each do |project_daily_description| %>
+  <tr>
+    <td><%= project_daily_description.employee_id %></td>
+    <td><%= project_daily_description.project_id %></td>
+    <td><%= project_daily_description.emp_status_date %></td>
+    <td><%= project_daily_description.emp_project_description %></td>
+    <td><%= link_to 'Show', project_daily_description %></td>
+    <td><%= link_to 'Edit', edit_project_daily_description_path(project_daily_description) %></td>
+    <td><%= link_to 'Destroy', project_daily_description, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Project daily description', new_project_daily_description_path %>

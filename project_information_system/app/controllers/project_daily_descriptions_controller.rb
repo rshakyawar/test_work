@@ -1,0 +1,4 @@
+class ProjectDailyDescriptionsController < ApplicationController
+
+
+end

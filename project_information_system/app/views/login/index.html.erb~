@@ -1,0 +1,6 @@
+<br/><br/><br/><br/><br/><br/>
+<h1><center>Project Information System</h1>
+<hr>
+<center><h2><%= link_to 'Admin',loginpage_path %>
+<br/><br/>
+<%= link_to 'Employee', loginpage_path%></h2>

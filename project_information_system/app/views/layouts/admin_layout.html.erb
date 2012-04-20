@@ -1,0 +1,18 @@
+<%= stylesheet_link_tag :all %>
+<%= javascript_include_tag :all %>
+
+<body>		
+	
+<div class="navbar">
+			<ul id="nav">
+				<li><a><%= link_to 'Home', admin_login_show_path %></a></li>
+				<li><a><%= link_to 'Add Project', new_project_path %></a></li>
+				<li><a><%= link_to 'Add Employee', new_employee_path %></a></li>
+				<li><a><%= link_to 'Show All Employee', all_employee_on_project_path %></a></li>
+				<li><a><%= link_to 'Query', show_query_path %></li></a>
+				<li><a><%= link_to 'LogOut', destroy_path %></a></li>
+<hr>
+			</ul>
+		</div>
+<%= yield %>
+</body>

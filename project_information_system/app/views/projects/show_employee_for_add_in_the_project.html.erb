@@ -1,0 +1,13 @@
+<div class="navbar">
+			<ul id="nav">
+			<h2>Add Employee On Project</h2>
+			<%= form_tag(add_employee_with_in_the_project_path, :method => "post") do %>
+				<div class="field"><%= hidden_field_tag("id",params[:id])%>
+					<% employees_array = @employee.each.map { |f| [f.employee_name, f.id] } %>
+					<%= select(:employee_name, :id, employees_array) %>
+					<%= submit_tag("Add") %>
+				</div>
+			<% end %>
+			<h3><%=link_to 'Back' ,admin_login_show_path %></h3>
+			</ul>
+</div>

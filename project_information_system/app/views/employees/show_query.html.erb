@@ -1,0 +1,33 @@
+<div class="navbar">
+			<ul id="nav">
+<h2>Query Page</h2>
+<h3><p id="notice"><%= notice %></h3>
+<% i=0%>
+<table>
+<% @employee.each do |f| %>
+
+	<div class="field">			
+				<tr>				   
+						<td><h3><%=i=i+1 %>.</h3> </td><td> <h3> <%= f.question %></h3></td><td><h3> <%=link_to 'Description',show_answer_path(f.id)%></h3></td>
+						<td><h3><% if is_admin? %><%= link_to 'Delete', delete_query_path(f.id)%></h3></td><%end%>
+			</div>
+		<% end %></table>
+<div id="question"></div>
+<%=link_to "Add",'#', :onclick=>"new Ajax.Request('/add_query',
+   																{
+     																method:'get',
+     																onSuccess: function(transport){
+							
+       																								divObject=$('question')  
+       																								var response = transport.responseText || \"no response text\";   																										divObject.update(response);
+     																							   },
+     																onFailure: function()
+																						{
+																							alert('Something went wrong...');
+																						 }
+																}
+														);" %>
+
+
+</ul>
+</div>

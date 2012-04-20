@@ -1,0 +1,32 @@
+<%= stylesheet_link_tag :all %>
+<%= javascript_include_tag :all %>
+<body>		
+	<div class="navbar">
+			<ul id="nav">
+<h3><%= link_to 'Change Password', take_password_path %></h3>
+			<h3><font color="green">welcome <%=current_user.employee_name%></font></h3>
+
+				<% @employee_work_projects.each do |f| %>
+					<div class="field">
+			
+							<li><a class="drops" id="link_one"><%= f.project.project_name %></a>
+								
+								<ul class="licious" id="box_one" style="display:none;">
+									<li><a><%= link_to 'Employee on project', employee_project_path(f.project.id) %></a></li>
+									<li><a><%= link_to 'View your Description', employee_project_daily_description_path(f.project.id) %></a></li>	
+								</ul>
+							</li>
+					</div>
+				<% end %>
+</ul>
+</div>			
+</body>
+
+
+
+
+		
+	
+
+
+

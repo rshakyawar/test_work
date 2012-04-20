@@ -1,0 +1,9 @@
+<div class="field">
+		<% employees_array = @employee.each.map { |f| [f.employee_name, f.id] } %>
+		<%=  select_tag 'employee[]', options_for_select(employees_array), :multiple => false, :size => 1 %>
+</div>
+
+
+
+		
+		

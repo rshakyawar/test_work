@@ -1,0 +1,7 @@
+Hi!
+<%= @username%>
+<%= @email%>
+<%= @message %>
+
+Thanks
+

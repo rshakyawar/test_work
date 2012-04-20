@@ -1,0 +1,11 @@
+<div class="navbar">
+			<ul id="nav">
+				<h1>Image Upload</h1><br/>
+				<h3><p id="notice"><%= notice %></h3>
+						<%= form_tag ({:action => 'uploadFile'},:multipart => true) do%>
+								<%= hidden_field_tag("id", current_user.id)%>
+								<p><label for="upload_file">Select File</label> :
+								<%= file_field 'upload', 'datafile' %></p><br/>
+								<%= submit_tag "Upload" %>
+								<h3><%= link_to 'Back' ,employee_login_show_path%></h3>
+						<% end%>

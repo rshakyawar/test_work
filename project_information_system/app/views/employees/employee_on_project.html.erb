@@ -1,0 +1,25 @@
+<%= stylesheet_link_tag :all %>
+<%= javascript_include_tag :all %>
+<h3><p id="notice"><%= notice %></h3>
+<div class="navbar">
+	<ul id="nav"><%= hidden_field_tag("id",params[:id])%>
+<table>
+
+		<% @employee.each do |f| %>
+			<div class="field">
+			<tr>
+				<td><h4><%= f.employee.employee_name %></h4></td>
+				<% if is_admin? %><td><h4><%= link_to 'Description', admin_view_description_path(f.project.id,f.employee.id)%></h4></td><%end%>
+		</tr>
+				 		
+			</div>
+		<% end %>
+</table>
+		<h3><% if is_admin? %>
+		<%= link_to 'Back', admin_login_show_path %>
+		<% else %>
+		<%= link_to 'Back', employee_login_show_path %>
+		<%end%>
+	</ul>
+	
+</div>

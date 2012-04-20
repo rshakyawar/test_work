@@ -1,0 +1,8 @@
+<%= form_tag(add_question_path, :method => "post") do %>
+
+	<%= label_tag(:question, "Question:") %>
+	<%= text_field_tag(:question) %><br/><br/>
+
+<%= submit_tag("ADD")%>
+
+<%end%>

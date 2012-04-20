@@ -1,0 +1,22 @@
+<%= form_for(@project) do |f| %>
+ <%= render "shared/error_messages", :target => @project %>
+<div class="navbar">
+<ul id="nav">			
+  <div class="field">
+    <%= f.label :project_name %><br />
+    <%= f.text_field :project_name %>
+  </div>
+  <div class="field">
+    <%= f.label :project_date %><br />
+    <%= f.date_select :project_date %>
+  </div>
+  <div class="field">
+    <%= f.label :project_status %><br />
+    <%= f.text_field :project_status %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+</ul>
+</div>

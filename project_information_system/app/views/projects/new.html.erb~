@@ -1,0 +1,11 @@
+<%= form_for(:onsubmit=>"return validate_project();") do%>
+<ul id="nav">			
+  <div class="field">
+<h1>New project</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', admin_login_show_path %>
+</ul>
+</div>
+<% end %>

@@ -1,0 +1,16 @@
+<div class="navbar">
+			<ul id="nav">
+<table>
+
+				<% @employee.each do |f| %>
+					<div class="field">
+					  <tr><td><h3><%= f.employee.employee_name %></h3></td>
+											<td><h3><%= link_to 'Delete', delete_employee_path(f.employee.id), :confirm => 'Are you sure?', :method => :delete_employee %></h3></td>
+								</tr>
+					</div>
+				<% end %>
+</table>
+			<h3><%= link_to 'Back', admin_login_show_path %></h3>
+			</ul>
+<div>
+

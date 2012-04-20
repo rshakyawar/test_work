@@ -1,0 +1,6 @@
+<% form_for(:f, :url => add_multiple_project_path) do |f| %>
+    <% (1..3).each do |i| -%>
+    Project Name <%= f.text_field :project_name, :index => i  %><br/>
+    <%end%>
+<%end%>
+<%= submit_tag("Add") %>

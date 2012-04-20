@@ -1,0 +1,20 @@
+<div class="navbar">
+			<ul id="nav">
+<h2>Answer For this Question</h2>
+<h3><p id="notice"><%= notice %></h3>
+ <% i=0%>
+<table>
+<% @employee.each do |f| %>
+	<div class="field">			
+					<tr>			
+						 <td> <h4><%=i=i+1 %>:</h4></td><td> <h4><%= f.answer %></h4></td> 
+								<td><h4><% if is_admin? %><%= link_to 'Delete', delete_answer_for_query_path(f.id,params[:id])%></h4></td><%end%>
+					</tr>
+	</div>
+		<% end %>
+</table>
+<div id="answer"></div>
+<%=link_to "Add",'#', :onclick=>"load_text(#{params[:id]})" %>
+<%=link_to 'Back' ,show_query_path%>
+</ul>
+</div>

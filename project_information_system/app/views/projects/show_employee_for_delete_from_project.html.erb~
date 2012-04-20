@@ -1,0 +1,9 @@
+<h2>Delete Employee On Project</h2>
+<%= form_tag(delete_employee_from_project_path, :method => "post") do %>
+	<div class="field"><%= hidden_field_tag("id",params[:id])%>
+		<% employees_array = @employee.each.map { |f| [f.employee_name, f.id] } %>
+		<%= select(:employee_name, :id, employees_array) %>
+		<%= submit_tag("Delete") %>
+	</div>
+<% end %>
+<h3><%=link_to 'Back' ,admin_login_show_path %></h3>

@@ -1,0 +1,21 @@
+<div class="navbar">
+	<ul id="nav">
+<table border="2" bordercolor="black">
+	<tr>
+	<td><h3>Date</h3> </td>
+	<td><h3> Employee project Description</h3></td>
+</tr>
+
+<% @employee.each do |f| %>	
+	<tr>
+		<td><h3><%= f.emp_status_date%></h3></td>
+		<td><h3><%= f.emp_project_description %></h3></td>
+	</tr>
+
+<@a=f.project_id>
+<%end%></table>
+
+
+</ul>
+</div>
+

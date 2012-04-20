@@ -1,0 +1,8 @@
+<ul id="nav">			
+  <div class="field"><h1>Add New Employee</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', admin_login_show_path %>
+</ul>
+</div>

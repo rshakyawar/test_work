@@ -1,0 +1,10 @@
+<h2>Add Employee On Project</h2>
+<%= form_tag(update_project_for_employee_path, :method => "post") do %>
+	<div class="field"><%= hidden_field_tag("id",params[:id])%>
+		<% employees_array = @employee.each.map { |f| [f.employee_name, f.id] } %>
+		<%= select(:employee_name, :id, employees_array) %>
+		<%= submit_tag("Add") %>
+	</div>
+<% end %>
+<h3><%=link_to 'Back' admin_login_show_path %></h3>
+

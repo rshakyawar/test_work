@@ -1,0 +1,17 @@
+# Load the rails application
+require File.expand_path('../application', __FILE__)
+
+# Initialize the rails application
+ProjectInformationSystem::Application.initialize!
+ActionMailer::Base.delivery_method = :smtp
+ActionMailer::Base.server_settings = {
+   :address => "localhost",
+   :port => 25,
+   :domain => "255.255.255.0",
+   :authentication => :login,
+   :user_name => "admin",
+   :password => "admin",
+}
+ActionMailer::Base.default_content_type = "text/html"
+
+

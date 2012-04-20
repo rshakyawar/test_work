@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  employee_id: 1
+  project_id: 1
+  emp_status_date: 2010-11-25
+  emp_project_description: MyString
+
+two:
+  employee_id: 1
+  project_id: 1
+  emp_status_date: 2010-11-25
+  emp_project_description: MyString

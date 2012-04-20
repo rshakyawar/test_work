@@ -1,0 +1,28 @@
+<%= stylesheet_link_tag :all %>
+<%= javascript_include_tag :all %>
+<body>
+
+<div class="navbar">
+			<ul id="nav">
+<h3>
+<table>
+	<tr>
+			<td>	<h3><%= link_to 'Change Password', take_password_path %></h3></td><td><h3><%= link_to 'upload_image',browse_image_plugin_path%></h3></td><td><h3><%= link_to 'view all images',show_profile_for_plugin_path%></h3></td></tr> </table>
+<h3><font color="green">welcome <%=current_user.employee_name%></font></h3>
+<%=link_to 'Send Mail',send_mail_path %>
+
+<% @project.each do |project| %>
+	<div class="field">
+		<h4><%= project.project_name %></a></h4>
+			
+					<%= link_to 'Show Employee', employee_project_path(project.id) %></a></li>
+					<%= link_to 'Add Employee', show_employee_for_add_in_the_project_path(project.id) %></a></li>
+					<%= link_to 'Delete Employee', show_employee_for_delete_from_project_path(project.id) %>
+				  <%= link_to 'Add Multiple Employee', show_for_add_multiple_employee_in_the_project_path(project.id) %></a></li>
+					<%= link_to 'Delete Project', delete_complete_project_path(project.id)%></a></li>
+	</div>
+<% end %>
+</ul>
+</div>	
+</body>
+

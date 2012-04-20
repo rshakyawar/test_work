@@ -1,0 +1,14 @@
+<div class="navbar">
+	<ul id="nav">
+		<h2>Add Multiple Employee in the Project</h2>
+		<%= form_tag(add_multiple_employee_with_in_the_project_path, :method => "post")  %>
+			<%= hidden_field_tag("id",params[:id])%>	
+			<%= render 'partial_project' %>
+			<%= render 'partial_project' %>
+			<%= render 'partial_project' %>
+			<%= submit_tag("Add") %>	
+			<h3><%=link_to 'Back' ,admin_login_show_path %></h3>
+		<%end%>
+
+	</ul>
+</div>

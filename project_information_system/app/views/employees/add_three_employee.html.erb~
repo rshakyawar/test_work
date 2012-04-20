@@ -1,0 +1,6 @@
+<%= form_tag(add_three_employee_path, :method => "post")  %>
+<%= hidden_field_tag("id",params[:id][])%>
+<%= render 'partial_add_three' %>
+<%= render 'partial_add_three' %>
+<%= render 'partial_add_three' %>
+<%= submit_tag("Add") %>

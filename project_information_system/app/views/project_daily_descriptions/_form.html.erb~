@@ -1,0 +1,28 @@
+<%= form_for(@project_daily_description) do |f| %>
+  <% if @project_daily_description.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project_daily_description.errors.count, "error") %> prohibited this project_daily_description from being saved:</h2>
+
+      <ul>
+      <% @project_daily_description.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+  <div class="field">
+    <%= f.label :emp_status_date %><br />
+    <%= f.date_select :emp_status_date %>
+  </div>
+  <div class="field">
+    <%= f.label :emp_project_description %><br />
+    <%= f.text_field :emp_project_description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+

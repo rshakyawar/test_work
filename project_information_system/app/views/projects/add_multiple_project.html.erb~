@@ -1,0 +1,5 @@
+
+<%= render 'partial_add_multiple_project' %>
+<%= render 'partial_add_multiple_project' %>
+<%= render 'partial_add_multiple_project' %>
+<%= submit_tag("Add") %>

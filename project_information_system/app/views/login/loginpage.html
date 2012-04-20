@@ -1,0 +1,21 @@
+<br/><br/><br/><br/><br/>
+
+
+<center>
+<h2><p id="notice">
+<%= notice %></h2>
+<br/></p>
+<body>
+
+<%= form_tag(login_check_path,:method => "post" ,:onsubmit=> "return validate_loginpage();") do  %>
+	  	
+  <%= label_tag(:username, "User Name:") %>
+<%= text_field_tag(:user_name) %> 
+<br/><br/>
+  <%= label_tag(:password, "Password:") %>
+  <%= password_field_tag(:password) %>
+<br/><br/>
+  <%= submit_tag("Login") %></center>
+<% end %>
+</div>
+</body>

@@ -1,0 +1,40 @@
+<%= stylesheet_link_tag :all %>
+<%= javascript_include_tag :all %>
+<body>		
+	
+		<div class="navbar">
+			<ul id="nav">
+				<li><a><%= link_to 'Home',show_employee_path %></li></a>
+				<li><a><%= link_to 'All Project', projects_path %></li></a>
+				<li><a><%= link_to 'Query', employees_path%></li></a>
+				<li><a><%= link_to 'Change Password', changepassword_path %></li></a>
+				<li><a><%= link_to 'Sign Out', destroy_path %></li></a><br/>
+				<hr>
+
+				<h3><p id="notice"><%= notice %></h3>
+
+				<% @employee_work_projects.each do |f| %>
+					<div class="field">
+			
+							<li><a class="drops" id="link_one"><%= f.project.project_name %></a>
+								
+								<ul class="licious" id="box_one" style="display:none;">
+									<li><a><%= link_to 'Employee on project', employee_project_path(f.project.id) %></a></li>
+									<li><a><%= link_to 'Employee Description', employee_project_daily_description_path(f.project.id) %></a></li>	
+								</ul>
+							</li><br/>
+					</div>
+				<% end %>
+			</ul>
+		</div>
+</body>
+
+
+
+
+		
+	
+</body>
+
+
+

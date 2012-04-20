@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Employee:</b>
+  <%= @project_daily_description.employee_id %>
+</p>
+
+<p>
+  <b>Project:</b>
+  <%= @project_daily_description.project_id %>
+</p>
+
+<p>
+  <b>Emp status date:</b>
+  <%= @project_daily_description.emp_status_date %>
+</p>
+
+<p>
+  <b>Emp project description:</b>
+  <%= @project_daily_description.emp_project_description %>
+</p>
+
+
+<%= link_to 'Edit', edit_project_daily_description_path(@project_daily_description) %> |
+<%= link_to 'Back', project_daily_descriptions_path %>

@@ -1,0 +1,178 @@
+class EmployeesController < ApplicationController
+layout EMPLOYEE_LAYOUT
+include LoginHelper
+
+  # Show View for Add New employee
+  def new
+    @employee = Employee.new
+		render :layout=>ADMIN_LAYOUT
+  end
+
+  # Create new employee
+  def create
+    @employee = Employee.new(params[:employee])
+		if @employee.save
+			redirect_to :action=>"new" ,:layout=>"admin_layout",:notice=>show_flash_message('Employee is added')
+    else
+		  render :action=>"new",:layout=>ADMIN_LAYOUT
+		end
+ 	end
+
+  # It will show all the projects of logged in employee 
+  def employee_login_show
+		@employee_work_projects = current_user.employee_projects
+		login_method	
+	end
+
+  # It will show all the employees 
+	def employee_on_project
+			#@employee = EmployeeProject.select("employee_id,project_id").where("project_id = ? ",params[:id])
+			@employee=EmployeeProject.employee_on_project(params[:id])			
+			if is_admin?			
+			render :layout=>ADMIN_LAYOUT
+			end
+	end
+	
+	# This method will give project description of the logged in employee  
+	def employee_project_daily_description
+		#@employee = ProjectDailyDescription.select("emp_status_date,emp_project_description").where("project_id = ? AND employee_id = ?",params[:id], current_user.id)
+			@employee = ProjectDailyDescription.employee_project_daily_description(params[:id],current_user.id)		
+	end
+	
+	#show all Employee on the project
+  def all_employee_on_project
+	@employee =EmployeeProject.select("DISTINCT(employee_id)")
+	render :layout=>ADMIN_LAYOUT
+	end 
+	
+	# Delete Employee 
+	def delete_employee
+		@employee=Employee.find(:first,:conditions =>["id = ? ",params[:id]])
+		if @employee.destroy
+			redirect_to all_employee_on_project_path
+		else
+			redirect_to :action=>"all_employee_on_project", :notice=>show_flash_message("Employee is not deleted")	
+		end	
+	end
+
+	# Delete Image 
+	def delete_image
+		@employee=EmployeeImage.find(:first,:conditions =>["id = ? ",params[:id]])
+		if @employee.destroy
+		redirect_to show_profile_for_plugin_path			
+		else 
+		render :action=>"view_profile" ,:notice=>show_flash_message("Image is not deleted")
+		end
+	end
+	
+	# It wil Show all the Queries
+	def show_query
+		@employee =QueryQuestion.select("id","question")
+		if is_admin?
+			render :layout=>ADMIN_LAYOUT
+		end
+	end 
+
+	# Add Query and save it in database
+	def add_question
+		unless params[:question].blank?
+		@employee=QueryQuestion.new()
+		@employee[:question]=params[:question]
+		@employee.save
+		redirect_to show_query_path
+		else
+		redirect_to :action=>"show_query",:notice=>show_flash_message("Question field shouldn't be empty")
+		end
+	end
+	
+	def add_query
+		if request.xhr?
+			render :layout=>false
+		end
+	end
+
+	def delete_query
+		@delete_query=QueryQuestion.find(:first,:conditions =>["id = ? ",params[:id]])
+		if @delete_query.destroy
+			redirect_to show_query_path
+		else 
+			render :action=>"show_query",:notice=>show_flash_message("Query is not deleted")	
+		end
+	end
+  # It will show all the answer of selected 
+	def show_answer
+	 @employee =QueryAnswer.select("id","query_question_id","answer").where("query_question_id = ?",params[:id])
+		if is_admin?
+			render :layout=>ADMIN_LAYOUT
+		end
+	end
+
+	def submit_answer
+    if request.xhr?
+		 render :layout=>false
+    end
+  end
+
+	
+	# Add answer of select query 
+	def add_answer
+		unless params[:answer].blank?
+			@employee = QueryAnswer.new()
+			@employee[:query_question_id]=params[:id]
+			@employee[:answer]=params[:answer]
+			if @employee.save
+			redirect_to :action=>"show_answer",:controller=>:employees ,:id=>params[:id]
+			end	
+		else
+			redirect_to :action=>"show_answer",:controller=>:employees,:id=>params[:id],:notice=>show_flash_message("Answer field shouldn't be empty")
+		end
+	end
+	
+	def delete_answer_for_query
+		@delete_query=QueryAnswer.find(:first,:conditions =>["id = ? ",params[:id]])
+		if @delete_query.destroy
+			redirect_to :action=>"show_answer",:id=>params[:project_id]	
+		else 
+			render :action=>"show_answer",:notice=>show_flash_message("Answer is not deleted")	
+		end			
+	end
+
+	# Admin can view employee description 
+  def admin_view_description
+	#@employee = ProjectDailyDescription.select("employee_id","project_id","emp_status_date","emp_project_description").where("employee_id = ? AND project_id = ? ",params[:employee_id],params[:project_id])
+	@employee =ProjectDailyDescription.employee_project_daily_description(params[:project_id],params[:employee_id])
+	render :layout=>ADMIN_LAYOUT	
+	end
+	
+
+	# Add project daily description
+	def add_project_daily_description
+		unless params[:emp_project_description].blank?
+			selected_yy_mm_dd=params[:emp]["emp_status_date(1i)"]
+			selected_yy_mm_dd<<"-#{params[:emp]["emp_status_date(2i)"]}"
+			selected_yy_mm_dd<<"-#{params[:emp]["emp_status_date(3i)"]}"
+			@project_daily_description = ProjectDailyDescription.new()
+	  	@project_daily_description[:project_id]=params[:id]
+			@project_daily_description[:employee_id]=current_user.id
+			@project_daily_description[:emp_status_date]=selected_yy_mm_dd
+			@project_daily_description[:emp_project_description]=params[:emp_project_description]
+			@project_daily_description.save
+			redirect_to :action=>"employee_project_daily_description",:controller=>:employees,:id=>params[:id]  
+		else		
+			show_flash_message('Descritpion field cannot be Empty ')
+			redirect_to show_for_add_daily_description_path 		
+		end	
+	end
+
+	#Delete Selected description
+	def delete_selected_description
+		@description= ProjectDailyDescription.find(:first,:conditions=>["id = ? ",params[:id]])
+		if @description.destroy
+			redirect_to :action=>"employee_project_daily_description", :id=>params[:project_id]		
+		else
+			redirect_to :action=>"employee_project_daily_description", :id=>params[:project_id],:notice=>show_flash_message("Description is not deleted.")
+		end
+	end
+	
+
+end

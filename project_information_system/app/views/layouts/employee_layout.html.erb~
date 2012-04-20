@@ -1,0 +1,17 @@
+<%= stylesheet_link_tag :all %>
+<%= javascript_include_tag :all %>
+<body>		
+	
+		<div class="navbar">
+			<ul id="nav">
+				<li><a><%= link_to 'Home',employee_login_show_path %></li></a>
+				<li><a><%= link_to 'All Project', projects_path %></li></a>
+				<li><a><%= link_to 'Upload image', browse_image_plugin_path%></li></a>
+				<li><a><%= link_to 'Query', show_query_path %></li></a>
+				<li><a><%= link_to 'View Profile', view_profile_plugin_path %></li></a>
+				<li><a><%= link_to 'Sign Out', destroy_path %></li></a><br/>	
+<hr>
+			</ul>
+		</div>
+<%= yield %>
+</body>

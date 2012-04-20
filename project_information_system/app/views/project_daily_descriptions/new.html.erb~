@@ -1,0 +1,9 @@
+<div class="navbar">
+			<ul id="nav">
+				<h2>Add Your Description </h2>
+				<p id="notice"><%= notice %></h3>
+				<%= render 'form' %>
+	
+			</ul>
+</div>
+

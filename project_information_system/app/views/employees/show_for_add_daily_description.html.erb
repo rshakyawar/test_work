@@ -1,0 +1,24 @@
+<body>
+<div class="navbar">
+			<ul id="nav">
+<h3><p id="notice"><%= notice %></h3>
+<%= form_tag(add_project_daily_description_path, :method => "post") do  %> 
+<%= hidden_field_tag("id",params[:id])%>
+ <div class="field">
+    <%= label_tag :emp_status_date %><br />
+    <%= date_select :emp, :emp_status_date %>
+  </div>
+  <div class="field">
+    <%= label_tag :emp_project_description %><br />
+    <%= text_field_tag :emp_project_description %>
+  </div>
+  <div class="actions">
+    <%= submit_tag("ADD") %>
+  </div>
+
+<% end %>
+</ul>
+</div>
+</body>
+
+

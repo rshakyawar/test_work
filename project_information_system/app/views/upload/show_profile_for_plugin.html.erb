@@ -1,0 +1,13 @@
+<div class="navbar">
+			<ul id="nav">
+				<h3><%= label_tag(:name, "Name:") %> <%= current_user.employee_name %></h3>
+				<h3><%= label_tag(:email, "Email:") %> <%= current_user.employee_email %></h3>
+<%@employee_image.each do |e|%>
+<table>
+<tr>
+	<td><%=image_tag e.photo.url(:thumb)%></td><td><%= link_to 'Delete' ,delete_image_path(e.id)%></td> <br/><br/>
+</tr>
+</table>
+<%end%>
+</ul>
+</div>

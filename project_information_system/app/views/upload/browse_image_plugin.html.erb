@@ -1,0 +1,13 @@
+<div class="navbar">
+			<ul id="nav">
+<h2>Image Upload</h2>
+<h3><p id="notice"><%= notice %></h3>
+
+<% form_for @employee_image, :url => add_image_by_plugin_path, :html => { :multipart => true } do |e| %>
+	<%= render "shared/error_messages" ,:target=>@employee_image%>
+  <%= e.file_field :photo%><br/><br/>
+	<%= submit_tag "Upload" %>
+<%end%>
+
+</ul>
+</div>

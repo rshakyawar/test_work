@@ -1,0 +1,55 @@
+class ProjectDailyDescriptionsController < ApplicationController
+  # GET /project_daily_descriptions
+  # GET /project_daily_descriptions.xml
+  def index
+    @project_daily_descriptions = ProjectDailyDescription.all
+	end
+
+  # GET /project_daily_descriptions/1
+  # GET /project_daily_descriptions/1.xml
+  def show
+    @project_daily_description = ProjectDailyDescription.find(params[:id])
+  end
+
+  # GET /project_daily_descriptions/new
+  # GET /project_daily_descriptions/new.xml
+  def new
+    @project_daily_description = ProjectDailyDescription.new
+		render :layout=>"employee_layout"
+  end
+
+  # GET /project_daily_descriptions/1/edit
+  def edit
+    @project_daily_description = ProjectDailyDescription.find(params[:id])
+  end
+
+  # PUT /project_daily_descriptions/1
+  # PUT /project_daily_descriptions/1.xml
+  def update
+    @project_daily_description = ProjectDailyDescription.find(params[:id])
+
+    respond_to do |format|
+      if @project_daily_description.update_attributes(params[:project_daily_description])
+        format.html { redirect_to(@project_daily_description, :notice => 'Project daily description was successfully updated.') }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @project_daily_description.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /project_daily_descriptions/1
+  # DELETE /project_daily_descriptions/1.xml
+  def destroy
+    @project_daily_description = ProjectDailyDescription.find(params[:id])
+    @project_daily_description.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(project_daily_descriptions_url) }
+      format.xml  { head :ok }
+    end
+  end
+
+
+end

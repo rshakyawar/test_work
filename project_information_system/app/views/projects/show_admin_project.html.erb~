@@ -1,0 +1,25 @@
+<%= link_to 'Home', customer %>
+<%= link_to 'Add Project', project %>
+<td><%= link_to 'Show All Employee', Employee %>
+<td><%= link_to 'Sign Out', loginpage %>
+<hr>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Address</th>
+  </tr>
+
+<% @customers.each do |customer| %>
+  <tr>
+    <td><%=h customer.name %></td>
+    <td><%=h customer.address %></td>
+    <td><%= link_to 'Show', customer %></td>
+    <td><%= link_to 'Edit', edit_customer_path(customer) %></td> 
+    <td><%= link_to 'Destroy', customer, :confirm => 'Are you sure?', :method => :delete %></td>
+<td>
+
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'New customer', new_customer_path %>

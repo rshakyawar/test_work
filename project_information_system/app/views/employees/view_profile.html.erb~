@@ -1,0 +1,12 @@
+<div class="navbar">
+			<ul id="nav">
+				<h3><%= label_tag(:name, "Name:") %> <%= current_user.employee_name %></h3>
+				<h3><%= label_tag(:email, "Email:") %> <%= current_user.employee_email %></h3>
+				<% @employee.each do |f| %>
+					<div class="field">
+									 <%= image_tag f.employee_image ,:height=>150%><%= link_to 'Delete' ,delete_image_path(f.id)%>  					 		
+					</div>
+				<% end %>
+				<h3><%= link_to 'Back' ,employee_login_show_path%></h3>
+</ul>
+</div>
